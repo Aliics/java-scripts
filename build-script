@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SCRIPT_ROOT=$PWD
+BIN="$HOME/.local/bin/$1"
+
+# Enter to appropriate directory for the script
+cd "$1" || exit 1
+javac "$2.java" -d ../bin/
+cd - || exit 1
+
+# Create the Java execution script
+rm -f "$BIN"
+echo "#!/usr/bin/env bash
+java -cp $SCRIPT_ROOT/bin/ $2 \$@" >> "$BIN"
+
+chmod +x "$BIN"
