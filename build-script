@@ -11,6 +11,6 @@ cd - || exit 1
 # Create the Java execution script
 rm -f "$BIN"
 echo "#!/usr/bin/env bash
-java -cp $SCRIPT_ROOT/bin/ $2 \$@" >> "$BIN"
+java -ea -cp $SCRIPT_ROOT/bin/ $2 \$@" >> "$BIN"
 
 chmod +x "$BIN"
